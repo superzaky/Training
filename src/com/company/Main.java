@@ -67,11 +67,12 @@ public class Main {
 
         while(c < 4000000) {
             sum += c;
+            //0x01 is een hexadecimale getal dat gelijk staat met het getal 1
             d = b+(c<<0x01);
             c = d+b+c;
             b = d;
-            //4613732
         }
+        //4613732
         System.out.println(sum);
     }
 }
