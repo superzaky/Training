@@ -56,7 +56,14 @@ public class P1 implements Solution {
     }
 
     public float calculateSumOfMultiplier(int multiplier){
-        // based on formula s = n/2 * (a + (a*n))
+        /*
+         *  Formula to calculate sum of n multiples
+         *           S = n/2 * (a + l)
+         *  where S is the sum of n elements (multiples)
+         *        n is the number of elements (multiples)
+         *        a is the first element (multiplier) in the series
+         *        l is a * n
+         */
         long n = 999 / multiplier;
         float q = n/ 2.0f;
         return  q* ( multiplier + multiply( n, multiplier));

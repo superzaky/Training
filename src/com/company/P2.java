@@ -32,16 +32,19 @@ public class P2 implements Solution {
 //        System.out.println(Integer.toString(sum));
 
         //Betere oplossing zonder if statement in de while loop
-        int b = 1;
-        int c = 2, d;
+        int oddValuedTerm = 1;
+        int evenValuedTerm = 2, d;
         long sum = 0;
 
-        while(c < 4000000) {
-            sum += c;
+        while(evenValuedTerm < 4000000) {
+            // sum = 2 bij eerste iteratie
+            sum += evenValuedTerm;
             //0x01 is een hexadecimale getal dat gelijk staat met het getal 1
-            d = b+(c<<0x01);
-            c = d+b+c;
-            b = d;
+            // d = 5 bij eerste iteratie
+            d = oddValuedTerm+(evenValuedTerm<<0x01);
+            // evenValuedTerm = 8 (5 + 1 + 2) bij eerste iteratie
+            evenValuedTerm = d+oddValuedTerm+evenValuedTerm;
+            oddValuedTerm = d;
         }
         //4613732
         return String.valueOf(sum);

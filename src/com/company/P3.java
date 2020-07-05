@@ -14,24 +14,29 @@ public class P3 implements Solution {
     public static void main(String[] args) {
         //Onderstaande werkt ook, maar is lastiger te begrijpen
 //        System.out.println(new P3().run());
-        System.out.println(maxPrimeFactor(600851475143L));
-//        System.out.println(maxPrimeFactor(21));
+        System.out.println(getMaxPrimeFactorOf(600851475143L));
+//        System.out.println(getMaxPrimeFactorOf(14L));
     }
 
-    public static long maxPrimeFactor(long n) {
+    public static long getMaxPrimeFactorOf(long number) {
         long factor = -1;
-        for (int i = 2; i * i <= n; i++) {
+        for (int i = 2; i * i <= number; i++) {
             System.out.println("i= "+i);
-            if (n == 1) { break; }
-            if (n % i != 0) { continue; }
+            if (number == 1) { break; }
+//            if (n % i != 0) { continue; }
             factor = i;
-            while (n % i == 0) {
-                n /= i;
-                System.out.println(" in while i= "+i);
-                System.out.println("n= "+n);
-            }
+            number = calculateMaxPrimeFactor(number, i);
         }
-        return n == 1 ? factor : n;
+        return number == 1 ? factor : number;
+    }
+
+    private static long calculateMaxPrimeFactor(long number, int i) {
+        while (number % i == 0) {
+            number /= i;
+            System.out.println(" in while i= "+i);
+            System.out.println("n= "+number);
+        }
+        return number;
     }
 
     /*
@@ -42,8 +47,8 @@ public class P3 implements Solution {
      */
     @Override
     public String run() {
-//        long n = 21;
-        long n = 600851475143L;
+        long n = 14;
+//        long n = 600851475143L;
         while (true) {
             long p = smallestFactor(n);
             System.out.println("p= "+p);
