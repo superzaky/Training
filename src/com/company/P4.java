@@ -50,13 +50,9 @@ public class P4 implements Solution {
         for (int p = h; p > i; p -= 11) {
             for (int q = j; q > i; q--) {
                 int product = p * q;
-
-                if (maxPalin < product && isPalindrome(product)) {
-                    maxPalin = product;
-                    break;
-                } else if (product < maxPalin) {
-                    break;
-                }
+                MaxPalindrome maxPalindrome = new MaxPalindrome(maxPalin, product);
+                maxPalindrome.setMaxPalinIfNecessary();
+                maxPalin = maxPalindrome.getMaxPalinValue();
             }
         }
         return maxPalin;
@@ -90,5 +86,26 @@ public class P4 implements Solution {
     @Override
     public String run() {
         return String.valueOf(checkPalindromes(990, 99, 999));
+    }
+
+    private static class MaxPalindrome {
+        private int maxPalin;
+        private int product;
+
+        public MaxPalindrome(int maxPalin, int product) {
+            this.maxPalin = maxPalin;
+            this.product = product;
+        }
+
+        public int getMaxPalinValue() {
+            return maxPalin;
+        }
+
+        public void setMaxPalinIfNecessary() {
+            if (maxPalin < product && isPalindrome(product)) {
+                maxPalin = product;
+            } else if (product < maxPalin) {
+            }
+        }
     }
 }
