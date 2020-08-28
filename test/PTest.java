@@ -1,7 +1,4 @@
-import com.company.P1;
-import com.company.P2;
-import com.company.P3;
-import com.company.P4;
+import com.company.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -24,4 +21,6 @@ public class PTest {
     }
 
     @Test public void testP004() { assertEquals("906609", new P4().run()); }
+
+    @Test public void testP005() { assertEquals("232792560", new P5().run()); }
 }
