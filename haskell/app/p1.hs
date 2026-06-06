@@ -7,9 +7,10 @@ multiply n multiplier =
 calculateSumOfMultiplier :: Integer -> Integer
 calculateSumOfMultiplier multiplier = 
   let n = 999 `div` multiplier 
-      q = n `div` 2
+  -- commented out 'q' here to prevent early rounding
+      -- q = n `div` 2
 
-  in q * (multiplier + (multiply n multiplier)) 
+  in (n * (multiplier + (multiply n multiplier))) `div` 2 -- we divide at the very end after we have multiplied everything together
 
 main :: IO ()
 main = do
@@ -19,4 +20,4 @@ main = do
   let sum3 = calculateSumOfMultiplier 15
   let sum  = sum1 + sum2 - sum3
   print sum
-  -- sum bevat 232167, maar het juiste antwoord hoort dit te zijn: 233168
+  -- sum bevat de correcte waarde: 233168
