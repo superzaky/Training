@@ -1,16 +1,15 @@
 module Main where
 
-
 multiply :: Integer -> Integer -> Integer
 multiply n multiplier =
   n*multiplier
 
-calculateSumOfMultiplier :: Integer -> Float
+calculateSumOfMultiplier :: Integer -> Integer
 calculateSumOfMultiplier multiplier = 
-  let n = 999 / fromIntegral multiplier -- we use fromIntegral to cast an integer into a float so that the math works
-      q = n / 2.0
-  -- we use floor to cast a float into an integer
-  in q * (fromIntegral multiplier + fromIntegral (multiply (floor n) multiplier)) 
+  let n = 999 `div` multiplier 
+      q = n `div` 2
+
+  in q * (multiplier + (multiply n multiplier)) 
 
 main :: IO ()
 main = do
@@ -20,5 +19,4 @@ main = do
   let sum3 = calculateSumOfMultiplier 15
   let sum  = sum1 + sum2 - sum3
   print sum
-  -- het juiste antwoord hoort dit te zijn: 233168
-  putStrLn ("Please look at my favorite odd numbers: " ++ show (filter odd [10..20]))
+  -- sum bevat 232167, maar het juiste antwoord hoort dit te zijn: 233168
