@@ -41,6 +41,7 @@ public class P2 implements Solution {
             sum += evenValuedTerm;
             //0x01 is een hexadecimale getal dat gelijk staat met het getal 1
             // d = 5 bij eerste iteratie
+            // writing evenValuedTerm << 0x01 in Java was just a low-level, hyper-optimized way of writing evenValuedTerm * 2
             d = oddValuedTerm+(evenValuedTerm<<0x01);
             // evenValuedTerm = 8 (5 + 1 + 2) bij eerste iteratie
             evenValuedTerm = d+oddValuedTerm+evenValuedTerm;
