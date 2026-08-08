@@ -15,7 +15,7 @@ isPalindrome n = nVal == reverseInt nVal 0
     nVal = abs (fromIntegral n)
 
     reverseInt :: Integer -> Integer -> Integer
-    reverseInt 0 acc = acc
+    reverseInt 0 acc = acc -- Dit is de basisstap (base case). Als het invoergetal x is gereduceerd tot 0, is de functie klaar. Het resultaat in de accumulator (acc) wordt dan teruggegeven.
     reverseInt x acc = reverseInt (x `div` 10) (acc * 10 + x `mod` 10)
 
 -- Explicit recursive loop so we don't rely on Haskell range syntax [h, h-11 ..]
@@ -39,8 +39,9 @@ main = do
   
   -- 2-digit test
   print (checkPalindromes 99 9 99)
-  
-  -- 3-digit main problem
+
+  -- 3-digit main problemr
   print (checkPalindromes 990 99 999)
   
   putStrLn "----------einde van programma-----------"
+
